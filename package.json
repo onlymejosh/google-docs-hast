@@ -37,11 +37,11 @@
   "dependencies": {
     "github-slugger": "^1.4.0",
     "hast-util-to-string": "^2.0.0",
-    "hastscript": "^7.0.2"
+    "hastscript": "^7.2.0"
   },
   "devDependencies": {
     "@googleapis/docs": "^0.4.2",
-    "@types/node": "^17.0.42",
+    "@types/node": "^18.11.18",
     "@types/prettier": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",

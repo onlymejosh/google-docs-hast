@@ -14,4 +14,17 @@
  * limitations under the License.
  */
 
-export { hast, toHast, HastOptions, transform } from "./hast";
+import { h } from "hastscript";
+
+import { wrapStyle } from "../common/wrapStyle";
+
+import type { docs_v1 } from "@googleapis/docs";
+import type { Element, Text } from "hast";
+
+export const transformFootnoteReference = (
+  footnoteReference: docs_v1.Schema$ParagraphElement["footnoteReference"]
+): Element | Text => {
+  const content = footnoteReference.footnoteNumber;
+
+  return h("sup", {}, content);
+};

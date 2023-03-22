@@ -16,12 +16,13 @@
 
 import { h } from "hastscript";
 
-import { paragraphStyleToAttributes } from "../common/paragraphStyle";
-import { namedStyleTypeToTag } from "../common/style";
+import { transformFootnoteReference } from "./footnoteReference";
 import { transformInlineObject } from "./inlineObject";
 import { transformPerson } from "./person";
 import { transformRichLink } from "./richLink";
 import { transformTextRun } from "./textRun";
+import { paragraphStyleToAttributes } from "../common/paragraphStyle";
+import { namedStyleTypeToTag } from "../common/style";
 
 import type { Context } from "..";
 import type { docs_v1 } from "@googleapis/docs";
@@ -56,7 +57,8 @@ const paragraphElementToElement = (
 ): Element | Text => {
   // @see https://developers.google.com/docs/api/reference/rest/v1/documents#ParagraphElement
   // TODO support other types of paragraph elements
-  const { inlineObjectElement, person, richLink, textRun } = el;
+  const { inlineObjectElement, person, richLink, textRun, footnoteReference } =
+    el;
 
   if (inlineObjectElement) {
     return transformInlineObject(inlineObjectElement, doc);
@@ -72,6 +74,10 @@ const paragraphElementToElement = (
 
   if (textRun) {
     return transformTextRun(textRun);
+  }
+
+  if (footnoteReference) {
+    return transformFootnoteReference(footnoteReference);
   }
 
   console.warn(

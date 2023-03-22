@@ -43,7 +43,7 @@ export const wrapStyle = (
 ): Element | Text => {
   const style: { [key: string]: string } = {};
 
-  if (backgroundColor) {
+  if (backgroundColor && backgroundColor.color) {
     style.backgroundColor = rgbColor(backgroundColor);
   }
 
@@ -59,7 +59,7 @@ export const wrapStyle = (
     style.fontWeight = String(weight);
   }
 
-  if (foregroundColor) {
+  if (foregroundColor && foregroundColor.color) {
     style.color = rgbColor(foregroundColor);
   }
 
