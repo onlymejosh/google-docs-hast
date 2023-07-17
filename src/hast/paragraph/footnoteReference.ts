@@ -26,5 +26,5 @@ export const transformFootnoteReference = (
 ): Element | Text => {
   const content = footnoteReference.footnoteNumber;
 
-  return h("sup", {}, content);
+  return h("sup", { id: footnoteReference.footnoteId }, content);
 };
