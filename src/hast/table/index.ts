@@ -58,6 +58,8 @@ export const styleTableCell = (
     paddingLeft,
     paddingRight,
     paddingTop,
+    rowSpan,
+    columnSpan,
   }: docs_v1.Schema$TableCellStyle
 ) => {
   const style: { [key: string]: string } = {};
@@ -70,6 +72,13 @@ export const styleTableCell = (
     style,
     borders({ borderBottom, borderLeft, borderRight, borderTop })
   );
+
+  if (rowSpan) {
+    el.properties.rowSpan = rowSpan;
+  }
+  if (columnSpan) {
+    el.properties.columnSpan = columnSpan;
+  }
 
   if (paddingBottom) {
     style.paddingBottom = `${paddingBottom.magnitude}${paddingBottom.unit}`;
