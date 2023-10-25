@@ -77,7 +77,7 @@ export const styleTableCell = (
     el.properties.rowSpan = rowSpan;
   }
   if (columnSpan) {
-    el.properties.columnSpan = columnSpan;
+    el.properties.colSpan = columnSpan;
   }
 
   if (paddingBottom) {
