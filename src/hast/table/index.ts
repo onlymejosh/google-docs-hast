@@ -60,8 +60,8 @@ export const tableToElement = (
     );
     if (cellWithRowSpanIndex) {
       console.log(cellWithRowSpanIndex);
-      console.log(JSON.stringify(td, null, 2));
       const td = row.children[cellWithRowSpanIndex];
+      console.log(JSON.stringify(td, null, 2));
       rowSpanCount = td.properties.rowSpan - 1;
       // cellIndex = cellWithRowSpanIndex;
     }
