@@ -162,7 +162,6 @@ const structuralElementToElement = (
   }
 
   if (table) {
-    console.log(JSON.stringify(tableToElement(table, context), null, 2));
     return tableToElement(table, context);
   }
 
