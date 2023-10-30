@@ -59,6 +59,8 @@ export const tableToElement = (
       (td) => td.properties.rowSpan > 1
     );
     if (cellWithRowSpanIndex) {
+      console.log(cellWithRowSpanIndex);
+      console.log(JSON.stringify(row, null, 2));
       const td = row.children[cellWithRowSpanIndex];
       rowSpanCount = td.properties.rowSpan - 1;
       // cellIndex = cellWithRowSpanIndex;
