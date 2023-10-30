@@ -45,14 +45,10 @@ export const tableToElement = (
     const headerWidths = tableStyle.tableColumnProperties.map(
       ({ width: { magnitude } }) => (magnitude / totalHeader) * 100
     );
-    console.log("headerWidths", headerWidths);
-
     const tr = h("tr");
     for (const [cellIndex, cell] of row.tableCells.entries()) {
       const td = h("td", transform(cell.content, context));
-      console.log(td);
       styleTableCell(td, cell.tableCellStyle, headerWidths[cellIndex]);
-      console.log(td);
       tr.children.push(td);
     }
     el.children.push(tr);
@@ -139,7 +135,7 @@ export const styleTableCell = (
   }
 
   if (Object.keys(style).length > 0) {
-    console.log();
+    console.log(serializeStyle(style));
     el.properties.style = serializeStyle(style);
   }
 };
