@@ -37,25 +37,20 @@ export const tableToElement = (
   for (const [i, row] of tableRows.entries()) {
     let headerWidths;
     // Style header rows
-    if (i === 0) {
-      const totalHeader = tableStyle.tableColumnProperties.reduce(
-        (acc, val) => (acc += val.width.magnitude),
-        0
-      );
 
-      headerWidths = tableStyle.tableColumnProperties.map(
-        ({ width: { magnitude } }) => (magnitude / totalHeader) * 100
-      );
-    }
+    const totalHeader = tableStyle.tableColumnProperties.reduce(
+      (acc, val) => (acc += val.width.magnitude),
+      0
+    );
+
+    headerWidths = tableStyle.tableColumnProperties.map(
+      ({ width: { magnitude } }) => (magnitude / totalHeader) * 100
+    );
 
     const tr = h("tr");
     for (const [cellIndex, cell] of row.tableCells.entries()) {
       const td = h("td", transform(cell.content, context));
-      styleTableCell(
-        td,
-        cell.tableCellStyle,
-        i === 0 ? headerWidths[cellIndex] : null
-      );
+      styleTableCell(td, cell.tableCellStyle, headerWidths[cellIndex]);
       tr.children.push(td);
     }
     el.children.push(tr);
