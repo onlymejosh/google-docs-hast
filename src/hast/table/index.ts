@@ -47,7 +47,8 @@ export const tableToElement = (
   let rowSpanCount = 0;
   let cellIndex = 0;
 
-  for (const row of el.children) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  for (const row of (el as any).children as any) {
     if (rowSpanCount) {
       row.children.splice(cellIndex, 1);
       rowSpanCount--;
@@ -56,7 +57,7 @@ export const tableToElement = (
 
     cellIndex = row.children.findIndex((td) => td.properties.rowSpan > 1);
     if (cellIndex) {
-      const td = row.children[rowSpanIndex];
+      const td = row.children[cellIndex];
       rowSpanCount = td.properties.rowSpan - 1;
     }
   }
