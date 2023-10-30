@@ -139,6 +139,7 @@ export const styleTableCell = (
 
   style.width = `400px`;
   if (Object.keys(style).length > 0) {
+    console.log(serializeStyle(style));
     el.properties.style = serializeStyle(style);
   }
 };
