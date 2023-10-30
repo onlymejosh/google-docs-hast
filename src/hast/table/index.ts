@@ -35,7 +35,6 @@ export const tableToElement = (
   // If row contains rowspan log row,index of cell and rowspan
   // for next rowspanConut -1 delete the cell at cellIndex
   for (const [i, row] of tableRows.entries()) {
-    let headerWidths;
     // Style header rows
 
     const totalHeader = tableStyle.tableColumnProperties.reduce(
@@ -43,13 +42,15 @@ export const tableToElement = (
       0
     );
 
-    headerWidths = tableStyle.tableColumnProperties.map(
+    const headerWidths = tableStyle.tableColumnProperties.map(
       ({ width: { magnitude } }) => (magnitude / totalHeader) * 100
     );
+    console.log("headerWidths", headerWidths);
 
     const tr = h("tr");
     for (const [cellIndex, cell] of row.tableCells.entries()) {
       const td = h("td", transform(cell.content, context));
+      console.log("headerWidthsCell", headerWidths[cellIndex]);
       styleTableCell(td, cell.tableCellStyle, headerWidths[cellIndex]);
       tr.children.push(td);
     }
