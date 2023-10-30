@@ -27,18 +27,35 @@ export const tableToElement = (
   table: docs_v1.Schema$Table,
   context: Context
 ): Element => {
-  const { tableRows } = table;
+  const { tableRows, tableStyle } = table;
 
   const el = h("table");
 
   // Loop through rows
   // If row contains rowspan log row,index of cell and rowspan
   // for next rowspanConut -1 delete the cell at cellIndex
-  for (const row of tableRows) {
+  for (const [i, row] of tableRows.entries()) {
+    let headerWidths;
+    // Style header rows
+    if (i === 0) {
+      const totalHeader = tableStyle.tableColumnProperties.reduce(
+        (acc, val) => (acc += val.width.magnitude),
+        0
+      );
+
+      headerWidths = tableStyle.tableColumnProperties.map(
+        ({ width: { magnitude } }) => (magnitude / totalHeader) * 100
+      );
+    }
+
     const tr = h("tr");
-    for (const cell of row.tableCells) {
+    for (const [cellIndex, cell] of row.tableCells.entries()) {
       const td = h("td", transform(cell.content, context));
-      styleTableCell(td, cell.tableCellStyle);
+      styleTableCell(
+        td,
+        cell.tableCellStyle,
+        i === 0 ? headerWidths[cellIndex] : null
+      );
       tr.children.push(td);
     }
     el.children.push(tr);
@@ -83,7 +100,8 @@ export const styleTableCell = (
     paddingTop,
     rowSpan,
     columnSpan,
-  }: docs_v1.Schema$TableCellStyle
+  }: docs_v1.Schema$TableCellStyle,
+  columnWidth: number
 ) => {
   const style: { [key: string]: string } = {};
 
@@ -123,6 +141,9 @@ export const styleTableCell = (
     style.verticalAlign = contentAlignment.toLowerCase();
   }
 
+  if (columnWidth) {
+    style.width = `${columnWidth}%`;
+  }
   if (Object.keys(style).length > 0) {
     el.properties.style = serializeStyle(style);
   }
