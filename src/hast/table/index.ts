@@ -141,10 +141,11 @@ export const styleTableCell = (
     style.verticalAlign = contentAlignment.toLowerCase();
   }
 
-  if (columnWidth) {
-    style.width = `${columnWidth}%`;
-  }
   if (Object.keys(style).length > 0) {
     el.properties.style = serializeStyle(style);
+  }
+
+  if (columnWidth) {
+    style.width = `${columnWidth}%`;
   }
 };
