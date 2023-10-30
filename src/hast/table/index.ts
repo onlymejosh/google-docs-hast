@@ -31,15 +31,34 @@ export const tableToElement = (
 
   const el = h("table");
 
+  // Loop through rows
+  // If row contains rowspan log row,index of cell and rowspan
+  // for next rowspanConut -1 delete the cell at cellIndex
   for (const row of tableRows) {
     const tr = h("tr");
     for (const cell of row.tableCells) {
       const td = h("td", transform(cell.content, context));
       styleTableCell(td, cell.tableCellStyle);
-
       tr.children.push(td);
     }
     el.children.push(tr);
+  }
+
+  let rowSpanCount = 0;
+  let cellIndex = 0;
+
+  for (const row of el.children) {
+    if (rowSpanCount) {
+      el.children.splice(cellIndex, 1);
+      rowSpanCount--;
+      continue;
+    }
+
+    cellIndex = row.children.findIndex((td) => td.properties.rowSpan > 1);
+    if (cellIndex) {
+      const td = row.children[rowSpanIndex];
+      rowSpanCount = td.properties.rowSpan - 1;
+    }
   }
 
   return el;
