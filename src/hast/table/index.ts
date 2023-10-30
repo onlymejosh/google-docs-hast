@@ -45,7 +45,7 @@ export const tableToElement = (
   }
 
   let rowSpanCount = 0;
-  let cellIndex = 0;
+  const cellIndex = 0;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   for (const row of (el as any).children as any) {
@@ -55,10 +55,13 @@ export const tableToElement = (
       continue;
     }
 
-    cellIndex = row.children.findIndex((td) => td.properties.rowSpan > 1);
-    if (cellIndex) {
-      const td = row.children[cellIndex];
+    const cellWithRowSpanIndex = row.children.findIndex(
+      (td) => td.properties.rowSpan > 1
+    );
+    if (cellWithRowSpanIndex) {
+      const td = row.children[cellWithRowSpanIndex];
       rowSpanCount = td.properties.rowSpan - 1;
+      cellIndex = cellWithRowSpanIndex;
     }
   }
 
