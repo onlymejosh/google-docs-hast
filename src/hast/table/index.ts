@@ -49,7 +49,7 @@ export const tableToElement = (
 
   for (const row of el.children) {
     if (rowSpanCount) {
-      el.children.splice(cellIndex, 1);
+      row.children.splice(cellIndex, 1);
       rowSpanCount--;
       continue;
     }
