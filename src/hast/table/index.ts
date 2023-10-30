@@ -137,9 +137,7 @@ export const styleTableCell = (
     style.verticalAlign = contentAlignment.toLowerCase();
   }
 
-  if (columnWidth) {
-    style.width = `${columnWidth}`;
-  }
+  style.width = `400px`;
   if (Object.keys(style).length > 0) {
     el.properties.style = serializeStyle(style);
   }
