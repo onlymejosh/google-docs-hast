@@ -50,8 +50,9 @@ export const tableToElement = (
     const tr = h("tr");
     for (const [cellIndex, cell] of row.tableCells.entries()) {
       const td = h("td", transform(cell.content, context));
-      console.log("headerWidthsCell", headerWidths[cellIndex]);
+      console.log(td);
       styleTableCell(td, cell.tableCellStyle, headerWidths[cellIndex]);
+      console.log(td);
       tr.children.push(td);
     }
     el.children.push(tr);
@@ -109,7 +110,7 @@ export const styleTableCell = (
     style,
     borders({ borderBottom, borderLeft, borderRight, borderTop })
   );
-
+  style.width = `400px`;
   if (rowSpan) {
     el.properties.rowSpan = rowSpan;
   }
@@ -137,9 +138,7 @@ export const styleTableCell = (
     style.verticalAlign = contentAlignment.toLowerCase();
   }
 
-  style.width = `400px`;
   if (Object.keys(style).length > 0) {
-    console.log(serializeStyle(style));
     el.properties.style = serializeStyle(style);
   }
 };
