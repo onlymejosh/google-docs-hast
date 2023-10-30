@@ -110,7 +110,7 @@ export const styleTableCell = (
     style,
     borders({ borderBottom, borderLeft, borderRight, borderTop })
   );
-  style.width = `400px`;
+  style.width = `400PX`;
   if (rowSpan) {
     el.properties.rowSpan = rowSpan;
   }
@@ -139,6 +139,7 @@ export const styleTableCell = (
   }
 
   if (Object.keys(style).length > 0) {
+    console.log();
     el.properties.style = serializeStyle(style);
   }
 };
