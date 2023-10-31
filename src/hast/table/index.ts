@@ -106,7 +106,11 @@ export const styleTableCell = (
     style,
     borders({ borderBottom, borderLeft, borderRight, borderTop })
   );
-  style.width = `400PX`;
+
+  if (columnWidth) {
+    el.properties.columnWidth = `${columnWidth}%`;
+  }
+
   if (rowSpan) {
     el.properties.rowSpan = rowSpan;
   }
