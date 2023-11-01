@@ -43,7 +43,8 @@ export const tableToElement = (
     );
 
     const headerWidths = tableStyle.tableColumnProperties.map(
-      ({ width: { magnitude = 0 } }) => (magnitude / totalHeader) * 100
+      ({ width: { magnitude = 0 } = {} }) =>
+        ((magnitude || 0) / totalHeader) * 100
     );
     const tr = h("tr");
     for (const [cellIndex, cell] of row.tableCells.entries()) {
