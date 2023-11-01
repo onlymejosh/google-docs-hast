@@ -38,7 +38,7 @@ export const tableToElement = (
     // Style header rows
 
     const totalHeader = tableStyle.tableColumnProperties.reduce(
-      (acc, val) => (acc += val.width.magnitude),
+      (acc, val) => (acc += val.width?.magnitude || 0),
       0
     );
 
