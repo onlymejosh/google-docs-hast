@@ -38,7 +38,7 @@ export const borderToCss = ({
   dashStyle,
 }: docs_v1.Schema$ParagraphBorder): string => {
   if (width?.magnitude === undefined) return "";
-
+  console.log("borderToCss", color, width);
   const borderStyle = { DOT: "dotted", DASH: "dashed", SOLID: "solid" }[
     dashStyle
   ];
