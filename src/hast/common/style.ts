@@ -33,7 +33,9 @@ export const textAlign = (
 };
 
 export const borderToCss = ({
-  color,
+  color: {
+    rgbColor: { red = 0, green = 0, blue = 0 },
+  },
   width,
   dashStyle,
 }: docs_v1.Schema$ParagraphBorder): string => {
