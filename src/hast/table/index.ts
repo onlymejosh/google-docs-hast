@@ -100,6 +100,7 @@ export const styleTableCell = (
   const style: { [key: string]: string } = {};
 
   if (backgroundColor && backgroundColor.color) {
+    console.log(backgroundColor);
     style.backgroundColor = rgbColor(backgroundColor);
   }
 
@@ -140,7 +141,6 @@ export const styleTableCell = (
   }
 
   if (Object.keys(style).length > 0) {
-    console.log(serializeStyle(style));
     el.properties.style = serializeStyle(style);
   }
 };
