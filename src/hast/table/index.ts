@@ -37,12 +37,12 @@ export const tableToElement = (
   for (const [i, row] of tableRows.entries()) {
     // Style header rows
 
-    const totalHeader = tableStyle.tableColumnProperties.reduce(
+    const totalHeader = (tableStyle.tableColumnProperties || []).reduce(
       (acc, val) => (acc += val.width?.magnitude || 0),
       0
     );
 
-    const headerWidths = tableStyle.tableColumnProperties.map(
+    const headerWidths = (tableStyle.tableColumnProperties || []).map(
       ({ width: { magnitude = 0 } = {} }) =>
         ((magnitude || 0) / totalHeader) * 100
     );
