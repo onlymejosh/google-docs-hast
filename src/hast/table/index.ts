@@ -100,7 +100,6 @@ export const styleTableCell = (
   const style: { [key: string]: string } = {};
 
   if (backgroundColor && backgroundColor.color) {
-    console.log(backgroundColor);
     style.backgroundColor = rgbColor(backgroundColor);
   }
 

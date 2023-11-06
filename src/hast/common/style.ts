@@ -33,17 +33,25 @@ export const textAlign = (
 };
 
 export const borderToCss = ({
-  // @ts-ignore
   color,
   width,
   dashStyle,
 }: docs_v1.Schema$ParagraphBorder): string => {
   if (width?.magnitude === undefined) return "";
-
+  let borderColor: docs_v1.Schema$OptionalColor = color;
+  if (color === undefined) {
+    borderColor = {
+      color: {
+        rgbColor: { red: 0, green: 0, blue: 0 },
+      },
+    };
+  }
   const borderStyle = { DOT: "dotted", DASH: "dashed", SOLID: "solid" }[
     dashStyle
   ];
-  return `${width.magnitude}${width.unit} ${rgbColor(color)} ${borderStyle}`;
+  return `${width.magnitude}${width.unit} ${rgbColor(
+    borderColor
+  )} ${borderStyle}`;
 };
 
 type Border =
