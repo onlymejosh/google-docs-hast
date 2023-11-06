@@ -40,7 +40,7 @@ export const borderToCss = ({
   if (width?.magnitude === undefined) return "";
   let borderColor: docs_v1.Schema$OptionalColor = color;
   console.log("borderToCss - borderColor", color);
-  if (color === undefined) {
+  if (!color?.color) {
     borderColor = {
       color: {
         rgbColor: { red: 0, green: 0, blue: 0 },
