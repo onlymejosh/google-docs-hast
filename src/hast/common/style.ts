@@ -39,7 +39,6 @@ export const borderToCss = ({
 }: docs_v1.Schema$ParagraphBorder): string => {
   if (width?.magnitude === undefined) return "";
   let borderColor: docs_v1.Schema$OptionalColor = color;
-  console.log("borderToCss - borderColor", color);
   if (!color?.color) {
     borderColor = {
       color: {
