@@ -15,7 +15,7 @@
     "docs": "typedoc --options typedoc.cjs && cp assets/logo.jpg docs/assets/logo.jpg",
     "format": "eslint . --fix",
     "lint": "eslint .",
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "test": "vitest"
   },
   "files": [
