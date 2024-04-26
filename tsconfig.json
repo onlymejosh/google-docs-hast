@@ -4,8 +4,9 @@
       "declaration": true,
       "target": "ESNEXT",
       "esModuleInterop": true,
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "skipLibCheck": true
     },
     "include": ["src/**/*", "e2e/**/*"],
     "exclude": ["node_modules"]
-  }
+}

@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@googleapis/docs": "^0.4.2",
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.12.7",
     "@types/prettier": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
@@ -51,7 +51,7 @@
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsdoc": "^39.3.13",
+    "eslint-plugin-jsdoc": "^44.2.1",
     "eslint-plugin-prettier": "^4.2.1",
     "googleapis": "^103.0.0",
     "hast-util-to-mdast": "^8.3.1",
@@ -61,10 +61,13 @@
     "typedoc": "^0.23.17",
     "typescript": "^4.8.4",
     "unified": "^10.1.2",
-    "vitest": "^0.14.2"
+    "vitest": "^1.5.2"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://wombat-dressing-room.appspot.com"
+  },
+  "volta": {
+    "node": "20.11.1"
   }
 }
