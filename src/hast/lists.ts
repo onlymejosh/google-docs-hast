@@ -21,7 +21,7 @@ import type { docs_v1 } from "@googleapis/docs";
 import type { Element } from "hast";
 
 export const isListItem = (el: docs_v1.Schema$StructuralElement): boolean => {
-  return Boolean(el.paragraph && el.paragraph.bullet);
+  return Boolean(el && el.paragraph && el.paragraph.bullet);
 };
 
 export const listItemLevel = (el: docs_v1.Schema$StructuralElement): number => {
